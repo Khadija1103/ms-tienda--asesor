@@ -4,3 +4,4 @@ export * from './asesor-cliente.controller';
 export * from './asesor-usuario-asesor.controller';
 export * from './cliente.controller';
 export * from './asesor.controller';
+export * from './cliente-mascota.controller';
