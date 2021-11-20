@@ -42,7 +42,7 @@ export class AsesorUsuarioAsesorController {
     @param.path.string('id') id: string,
     @param.query.object('filter') filter?: Filter<UsuarioAsesor>,
   ): Promise<UsuarioAsesor> {
-    return this.asesorRepository.tieneun(id).get(filter);
+    return this.asesorRepository.usuarioAsesor(id).get(filter);
   }
 
   @post('/asesors/{id}/usuario-asesor', {
@@ -61,13 +61,13 @@ export class AsesorUsuarioAsesorController {
           schema: getModelSchemaRef(UsuarioAsesor, {
             title: 'NewUsuarioAsesorInAsesor',
             exclude: ['id'],
-            optional: ['idasesor']
+            optional: ['asesorId']
           }),
         },
       },
     }) usuarioAsesor: Omit<UsuarioAsesor, 'id'>,
   ): Promise<UsuarioAsesor> {
-    return this.asesorRepository.tieneun(id).create(usuarioAsesor);
+    return this.asesorRepository.usuarioAsesor(id).create(usuarioAsesor);
   }
 
   @patch('/asesors/{id}/usuario-asesor', {
@@ -90,7 +90,7 @@ export class AsesorUsuarioAsesorController {
     usuarioAsesor: Partial<UsuarioAsesor>,
     @param.query.object('where', getWhereSchemaFor(UsuarioAsesor)) where?: Where<UsuarioAsesor>,
   ): Promise<Count> {
-    return this.asesorRepository.tieneun(id).patch(usuarioAsesor, where);
+    return this.asesorRepository.usuarioAsesor(id).patch(usuarioAsesor, where);
   }
 
   @del('/asesors/{id}/usuario-asesor', {
@@ -105,6 +105,6 @@ export class AsesorUsuarioAsesorController {
     @param.path.string('id') id: string,
     @param.query.object('where', getWhereSchemaFor(UsuarioAsesor)) where?: Where<UsuarioAsesor>,
   ): Promise<Count> {
-    return this.asesorRepository.tieneun(id).delete(where);
+    return this.asesorRepository.usuarioAsesor(id).delete(where);
   }
 }

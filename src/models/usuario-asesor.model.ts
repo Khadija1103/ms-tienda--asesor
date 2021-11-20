@@ -25,6 +25,11 @@ export class UsuarioAsesor extends Entity {
   })
   idasesor?: string;
 
+  @property({
+    type: 'string',
+  })
+  asesorId?: string;
+
   constructor(data?: Partial<UsuarioAsesor>) {
     super(data);
   }

@@ -42,7 +42,7 @@ export class ClienteMascotaController {
     @param.path.string('id') id: string,
     @param.query.object('filter') filter?: Filter<Mascota>,
   ): Promise<Mascota[]> {
-    return this.clienteRepository.dueño_mascota(id).find(filter);
+    return this.clienteRepository.mascota(id).find(filter);
   }
 
   @post('/clientes/{id}/mascotas', {
@@ -67,7 +67,7 @@ export class ClienteMascotaController {
       },
     }) mascota: Omit<Mascota, 'id'>,
   ): Promise<Mascota> {
-    return this.clienteRepository.dueño_mascota(id).create(mascota);
+    return this.clienteRepository.mascota(id).create(mascota);
   }
 
   @patch('/clientes/{id}/mascotas', {
@@ -90,7 +90,7 @@ export class ClienteMascotaController {
     mascota: Partial<Mascota>,
     @param.query.object('where', getWhereSchemaFor(Mascota)) where?: Where<Mascota>,
   ): Promise<Count> {
-    return this.clienteRepository.dueño_mascota(id).patch(mascota, where);
+    return this.clienteRepository.mascota(id).patch(mascota, where);
   }
 
   @del('/clientes/{id}/mascotas', {
@@ -105,6 +105,6 @@ export class ClienteMascotaController {
     @param.path.string('id') id: string,
     @param.query.object('where', getWhereSchemaFor(Mascota)) where?: Where<Mascota>,
   ): Promise<Count> {
-    return this.clienteRepository.dueño_mascota(id).delete(where);
+    return this.clienteRepository.mascota(id).delete(where);
   }
 }
